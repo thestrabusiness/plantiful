@@ -11,6 +11,10 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true
+
+  def reset_authentication_token!
+    update(authentication_token: AuthenticationToken.new)
+  end
 end
 
 # == Schema Information

@@ -2,7 +2,7 @@
 
 module GraphqlSupport
   def gql_query(query:, user: nil, variables: {}, context: {})
-    context[:current_user] = user
+    context[:current_user] ||= user
 
     query = GraphQL::Query.new(
       PlantifulSchema,
