@@ -97,6 +97,10 @@ GEM
       rake
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.7.0)
+      railties
+      sprockets-rails
+    graphql (1.11.6)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
@@ -233,6 +237,8 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   clearance
   factory_bot_rails
+  graphiql-rails
+  graphql
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)

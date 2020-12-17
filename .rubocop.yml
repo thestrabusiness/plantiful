@@ -41,3 +41,6 @@ Style/StringLiterals:
 
 Style/SymbolArray:
   EnforcedStyle: brackets
+
+Style/IfUnlessModifier:
+    Enabled: false
