@@ -5,6 +5,9 @@ class CreateUsers < ActiveRecord::Migration[6.1]
     create_table :users do |t|
       t.string :first_name, null: false
       t.string :last_name, null: false
+      t.string :email, null: false, index: true
+      t.string :password_digest, limit: 128, null: false
+      t.string :authentication_token, limit: 128, null: false, index: true
 
       t.timestamps
     end

@@ -26,5 +26,6 @@ FactoryBot.define do
     sequence(:email) { |n| "plantiful#{n}@exmaple.com" }
     password { "password" }
     last_name { "Last" }
+    authentication_token { AuthenticationToken.new }
   end
 end
