@@ -11,9 +11,13 @@ RSpec.describe Plant do
     it { should validate_presence_of(:name) }
   end
 
+  describe 'assocations' do
+    it { should have_many :check_ins }
+  end
+
   describe '#check_frequency' do
     it 'returns a duration' do
-      plant = Plant.new(check_frequency_unit: 'day', check_frequency_scalar: 5)
+      plant = build(:plant, check_frequency_unit: 'day', check_frequency_scalar: 5)
 
       expect(plant.check_frequency).to eq 5.days
     end

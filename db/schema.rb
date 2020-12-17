@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_17_015509) do
+ActiveRecord::Schema.define(version: 2020_12_17_020057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "check_ins", force: :cascade do |t|
+    t.bigint "plant_id", null: false
+    t.boolean "fertilized", default: false, null: false
+    t.boolean "watered", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["plant_id"], name: "index_check_ins_on_plant_id"
+  end
 
   create_table "plants", force: :cascade do |t|
     t.string "name", null: false
@@ -24,4 +33,5 @@ ActiveRecord::Schema.define(version: 2020_12_17_015509) do
     t.index ["name"], name: "index_plants_on_name"
   end
 
+  add_foreign_key "check_ins", "plants"
 end
