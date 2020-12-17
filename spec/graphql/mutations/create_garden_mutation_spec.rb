@@ -24,7 +24,7 @@ RSpec.describe Mutations::CreateGarden do
 
       result = gql_query(query: mutation, variables: variables)
 
-      expect(result.dig("errors", 0, "message")).to eq("User might be signed in to create a garden")
+      expect(result.dig("errors", 0, "message")).to eq("User must be signed in to create a garden")
       expect(result.dig("data", "createGarden")).to be_blank
     end
   end

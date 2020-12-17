@@ -7,6 +7,11 @@ class Garden < ApplicationRecord
 
   validates :name, presence: true
   validates :owner, presence: true
+
+  def member?(user)
+    users_and_owner = [users, owner].flatten
+    users_and_owner.include?(user)
+  end
 end
 
 # == Schema Information

@@ -4,7 +4,6 @@ module Mutations
   class CreateGarden < Mutations::BaseMutation
     argument :name, String, required: true
 
-    field :id, ID, null: false
     field :garden, Types::GardenType, null: false
 
     def resolve(args)
@@ -19,7 +18,7 @@ module Mutations
           errors: garden.errors
         )
       else
-        GraphQL::ExecutionError.new("User might be signed in to create a garden")
+        GraphQL::ExecutionError.new("User must be signed in to create a garden")
       end
     end
   end
