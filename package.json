@@ -1,7 +1,11 @@
 {
   "name": "plantiful",
   "private": true,
+  "scripts": {
+    "generate-types": "yarn elm-graphql http://localhost:3000/graphql --base Plantiful --output app/elm"
+  },
   "dependencies": {
+    "@dillonkearns/elm-graphql": "^4.0.5",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.2.1",

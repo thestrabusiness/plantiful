@@ -4,6 +4,12 @@ class GraphqlController < ApplicationController
   # but you'll have to authenticate your user separately
   # protect_from_forgery with: :null_session
 
+  skip_before_action :verify_authenticity_token, if: :inspecting_schema_locally?
+
+  def inspecting_schema_locally?
+    Rails.env.development? && params[:query].match?(/\Aquery IntrospectionQuery/)
+  end
+
   def execute
     variables = prepare_variables(params[:variables])
     query = params[:query]
