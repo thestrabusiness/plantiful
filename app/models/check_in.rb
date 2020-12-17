@@ -18,6 +18,7 @@ end
 #
 #  id              :bigint           not null, primary key
 #  fertilized      :boolean          default(FALSE), not null
+#  notes           :string
 #  watered         :boolean          default(FALSE), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

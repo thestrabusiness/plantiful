@@ -12,7 +12,8 @@ RSpec.describe Mutations::CreatePlant do
         name: "New plant",
         gardenId: garden.id.to_s,
         checkFrequencyUnit: "day",
-        checkFrequencyScalar: 5
+        checkFrequencyScalar: 5,
+        notes: "some notes"
       }
 
       result = gql_query(query: mutation, variables: variables, context: { current_user: user })
@@ -23,6 +24,7 @@ RSpec.describe Mutations::CreatePlant do
       expect(data.dig("plant", "name")).to eq variables[:name]
       expect(data.dig("plant", "checkFrequencyUnit")).to eq variables[:checkFrequencyUnit]
       expect(data.dig("plant", "checkFrequencyScalar")).to eq variables[:checkFrequencyScalar]
+      expect(data.dig("plant", "notes")).to eq variables[:notes]
       expect(data.dig("plant", "addedBy", "id")).to eq user.id.to_s
     end
 
@@ -72,13 +74,15 @@ RSpec.describe Mutations::CreatePlant do
         $checkFrequencyUnit: String!,
         $checkFrequencyScalar: Int!
         $gardenId: ID!
+        $notes: String,
       ) {
-        createPlant(input: { name: $name, checkFrequencyUnit: $checkFrequencyUnit, checkFrequencyScalar: $checkFrequencyScalar, gardenId: $gardenId }) {
+        createPlant(input: { name: $name, checkFrequencyUnit: $checkFrequencyUnit, checkFrequencyScalar: $checkFrequencyScalar, gardenId: $gardenId, notes: $notes }) {
           plant {
             id
             name
             checkFrequencyUnit
             checkFrequencyScalar
+            notes
             addedBy {
               id
             }

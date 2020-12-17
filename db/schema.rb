@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_17_024422) do
+ActiveRecord::Schema.define(version: 2020_12_17_175514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_024422) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "performed_by_id", null: false
+    t.string "notes"
     t.index ["performed_by_id"], name: "index_check_ins_on_performed_by_id"
     t.index ["plant_id"], name: "index_check_ins_on_plant_id"
   end
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_024422) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "garden_id", null: false
     t.bigint "added_by_id", null: false
+    t.string "notes"
     t.index ["added_by_id"], name: "index_plants_on_added_by_id"
     t.index ["garden_id"], name: "index_plants_on_garden_id"
     t.index ["name"], name: "index_plants_on_name"

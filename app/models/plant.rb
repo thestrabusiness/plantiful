@@ -26,6 +26,7 @@ end
 #  check_frequency_scalar :integer          not null
 #  check_frequency_unit   :string           not null
 #  name                   :string           not null
+#  notes                  :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  added_by_id            :bigint           not null

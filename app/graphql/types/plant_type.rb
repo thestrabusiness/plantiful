@@ -8,5 +8,6 @@ module Types
     field :check_frequency_scalar, Integer, null: false
     field :added_by, Types::UserType, null: false
     field :garden, Types::GardenType, null: false
+    field :notes, String, null: true
   end
 end

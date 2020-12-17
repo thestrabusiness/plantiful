@@ -6,6 +6,7 @@ module Mutations
     argument :name, String, required: true
     argument :check_frequency_unit, String, required: true
     argument :check_frequency_scalar, Integer, required: true
+    argument :notes, String, required: false
 
     field :plant, Types::PlantType, null: false
 
@@ -21,7 +22,8 @@ module Mutations
           garden: garden,
           added_by: user,
           check_frequency_unit: args[:check_frequency_unit],
-          check_frequency_scalar: args[:check_frequency_scalar]
+          check_frequency_scalar: args[:check_frequency_scalar],
+          notes: args[:notes]
         )
 
         MutationResult.call(
