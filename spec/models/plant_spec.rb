@@ -9,10 +9,12 @@ RSpec.describe Plant do
     it { should validate_presence_of(:check_frequency_unit) }
     it { should validate_inclusion_of(:check_frequency_unit).in_array Plant::FREQUENCY_UNITS }
     it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:garden) }
   end
 
   describe 'assocations' do
     it { should have_many :check_ins }
+    it { should belong_to :garden }
   end
 
   describe '#check_frequency' do

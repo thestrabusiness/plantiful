@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_17_020057) do
+ActiveRecord::Schema.define(version: 2020_12_17_022108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,14 +24,24 @@ ActiveRecord::Schema.define(version: 2020_12_17_020057) do
     t.index ["plant_id"], name: "index_check_ins_on_plant_id"
   end
 
+  create_table "gardens", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_gardens_on_name"
+  end
+
   create_table "plants", force: :cascade do |t|
     t.string "name", null: false
     t.string "check_frequency_unit", null: false
     t.integer "check_frequency_scalar", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "garden_id", null: false
+    t.index ["garden_id"], name: "index_plants_on_garden_id"
     t.index ["name"], name: "index_plants_on_name"
   end
 
   add_foreign_key "check_ins", "plants"
+  add_foreign_key "plants", "gardens"
 end
