@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Plant do
-  describe 'validations' do
+  describe "validations" do
     it { should validate_presence_of(:check_frequency_scalar) }
     it { should validate_numericality_of(:check_frequency_scalar) }
     it { should validate_presence_of(:check_frequency_unit) }
@@ -12,14 +12,14 @@ RSpec.describe Plant do
     it { should validate_presence_of(:garden) }
   end
 
-  describe 'assocations' do
+  describe "assocations" do
     it { should have_many :check_ins }
     it { should belong_to :garden }
   end
 
-  describe '#check_frequency' do
-    it 'returns a duration' do
-      plant = build(:plant, check_frequency_unit: 'day', check_frequency_scalar: 5)
+  describe "#check_frequency" do
+    it "returns a duration" do
+      plant = build(:plant, check_frequency_unit: "day", check_frequency_scalar: 5)
 
       expect(plant.check_frequency).to eq 5.days
     end

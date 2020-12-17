@@ -9,7 +9,7 @@ FactoryBot.define do
 
   factory :plant do
     sequence(:name) { |n| "Plant #{n}" }
-    check_frequency_unit { 'day' }
+    check_frequency_unit { "day" }
     check_frequency_scalar { 3 }
   end
 end
