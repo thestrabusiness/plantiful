@@ -13,6 +13,11 @@ class Plant < ApplicationRecord
   validates :check_frequency_scalar, presence: true, numericality: true
   validates :check_frequency_unit, presence: true, inclusion: FREQUENCY_UNITS
 
+  time_for_a_boolean :deleted
+
+  scope :active, -> { where(deleted_at: nil) }
+  scope :deleted, -> { where("deleted_at IS NOT NULL AND deleted_at < NOW()") }
+
   def check_frequency
     check_frequency_scalar.public_send(check_frequency_unit)
   end
@@ -25,6 +30,7 @@ end
 #  id                     :bigint           not null, primary key
 #  check_frequency_scalar :integer          not null
 #  check_frequency_unit   :string           not null
+#  deleted_at             :datetime
 #  name                   :string           not null
 #  notes                  :string
 #  created_at             :datetime         not null
