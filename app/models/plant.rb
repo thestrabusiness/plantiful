@@ -15,3 +15,25 @@ class Plant < ApplicationRecord
     check_frequency_scalar.public_send(check_frequency_unit)
   end
 end
+
+# == Schema Information
+#
+# Table name: plants
+#
+#  id                     :bigint           not null, primary key
+#  check_frequency_scalar :integer          not null
+#  check_frequency_unit   :string           not null
+#  name                   :string           not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  garden_id              :bigint           not null
+#
+# Indexes
+#
+#  index_plants_on_garden_id  (garden_id)
+#  index_plants_on_name       (name)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (garden_id => gardens.id)
+#
