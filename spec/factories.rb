@@ -14,6 +14,10 @@ FactoryBot.define do
     check_frequency_scalar { 3 }
     garden
     added_by { create(:user) }
+
+    after(:build) do |plant, _|
+      plant.garden.users << plant.added_by
+    end
   end
 
   factory :garden do
