@@ -5,9 +5,11 @@ require "rails_helper"
 RSpec.describe CheckIn do
   describe "validations" do
     it { should validate_presence_of :plant }
+    it { should validate_presence_of :performed_by }
   end
 
   describe "associations" do
+    it { should belong_to :performed_by }
     it { should belong_to :plant }
   end
 
