@@ -196,9 +196,6 @@ GEM
     time_for_a_boolean (0.2.1)
       activerecord
       railties
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     web-console (4.1.0)
@@ -238,7 +235,6 @@ DEPENDENCIES
   shoulda-matchers
   spring
   time_for_a_boolean
-  turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
   webpacker (~> 5.0)
